@@ -1,0 +1,14 @@
+repos:
+  - repo: local
+    hooks:
+      - id: format
+        name: format
+        entry: dart format
+        language: system
+        types: [dart]
+        require_serial: true
+      - id: analyze
+        name: analyze
+        entry: flutter analyze
+        language: system
+        pass_filenames: false
