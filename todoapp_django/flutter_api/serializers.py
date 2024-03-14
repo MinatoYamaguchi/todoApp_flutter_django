@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from .models import Todo_Item
+from .models import TodoItem
 
 
 class ItemSerializer(serializers.ModelSerializer):
     class Meta:
-        model=Todo_Item
+        model=TodoItem
         fields=(
             'id','title','content','isCompleted'
         )

@@ -13,7 +13,6 @@ class _TodoAddPageState extends ConsumerState<TodoAddPage> {
   final _formKey = GlobalKey<FormState>();
   final _contentKey = GlobalKey<FormFieldState>();
   final _titleKey = GlobalKey<FormFieldState>();
-  Map<String, String> formValue = {};
 
   @override
   Widget build(BuildContext context) {
@@ -76,15 +75,16 @@ class _TodoAddPageState extends ConsumerState<TodoAddPage> {
                 width: 300,
                 child: ElevatedButton(
                   onPressed: () {
+                    // ignore: unnecessary_parenthesis
                     if (!(_formKey.currentState!.validate())) return;
                     _formKey.currentState?.save();
-                    NonIdTodoItem item;
-                    item = NonIdTodoItem(
+                    TodoItem item;
+                    item = TodoItem(
                       title: _titleKey.currentState?.value ?? '',
                       content: _contentKey.currentState?.value ?? '',
                       isCompleted: false,
                     );
-                    ref.watch(todoItemProvider.notifier).addTodoList(item);
+                    addTodoList(item, ref);
                     Navigator.of(context).pop();
                   },
                   child: const Text(
