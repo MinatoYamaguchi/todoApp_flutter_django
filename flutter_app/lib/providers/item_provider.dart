@@ -15,6 +15,8 @@ Future<void> addTodoList(TodoItem item, WidgetRef ref) async {
     if (response.statusCode == 201) {
       // ignore: unused_result
       ref.refresh(unCompletedListProvider);
+    } else {
+      debugPrint(response.body);
     }
   } catch (error) {
     debugPrint(error.toString());
